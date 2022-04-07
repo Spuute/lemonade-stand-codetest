@@ -3,6 +3,18 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{BAD75945-FDE8-4C9E-9EF3-E379220CAACA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.Api", "source\Lemonade.Stand.Api\Lemonade.Stand.Api.csproj", "{0414BCD3-5800-4877-9015-714E266C2AEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.Application", "source\Lemonade.Stand.Application\Lemonade.Stand.Application.csproj", "{42478EAC-BB26-4490-8341-FABA3E202EC0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.Core", "source\Lemonade.Stand.Core\Lemonade.Stand.Core.csproj", "{CFEB7F3D-22E9-4CA4-AAFC-1CA0BB9CADD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.Infrastructure", "source\Lemonade.Stand.Infrastructure\Lemonade.Stand.Infrastructure.csproj", "{E9BA4176-4303-412A-9F2B-DB4F8840B4B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.WebUi", "source\Lemonade.Stand.WebUi\Lemonade.Stand.WebUi.csproj", "{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +22,34 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0414BCD3-5800-4877-9015-714E266C2AEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0414BCD3-5800-4877-9015-714E266C2AEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0414BCD3-5800-4877-9015-714E266C2AEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0414BCD3-5800-4877-9015-714E266C2AEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42478EAC-BB26-4490-8341-FABA3E202EC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42478EAC-BB26-4490-8341-FABA3E202EC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42478EAC-BB26-4490-8341-FABA3E202EC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42478EAC-BB26-4490-8341-FABA3E202EC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CFEB7F3D-22E9-4CA4-AAFC-1CA0BB9CADD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CFEB7F3D-22E9-4CA4-AAFC-1CA0BB9CADD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CFEB7F3D-22E9-4CA4-AAFC-1CA0BB9CADD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CFEB7F3D-22E9-4CA4-AAFC-1CA0BB9CADD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9BA4176-4303-412A-9F2B-DB4F8840B4B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9BA4176-4303-412A-9F2B-DB4F8840B4B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9BA4176-4303-412A-9F2B-DB4F8840B4B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9BA4176-4303-412A-9F2B-DB4F8840B4B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0414BCD3-5800-4877-9015-714E266C2AEE} = {BAD75945-FDE8-4C9E-9EF3-E379220CAACA}
+		{42478EAC-BB26-4490-8341-FABA3E202EC0} = {BAD75945-FDE8-4C9E-9EF3-E379220CAACA}
+		{CFEB7F3D-22E9-4CA4-AAFC-1CA0BB9CADD8} = {BAD75945-FDE8-4C9E-9EF3-E379220CAACA}
+		{E9BA4176-4303-412A-9F2B-DB4F8840B4B9} = {BAD75945-FDE8-4C9E-9EF3-E379220CAACA}
+		{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466} = {BAD75945-FDE8-4C9E-9EF3-E379220CAACA}
 	EndGlobalSection
 EndGlobal

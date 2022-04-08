@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  db:
+    image: mariadb:10.5
+    ports:
+      - "35200:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: dockerDb
+      MYSQL_DATABASE: LemonadeStand
+    restart: always
+    volumes:
+      - lemonadestand-dev-mariadb-data:/var/lib/mysql
+      - lemonadestand-dev-mariadb-config:/etc/mysql/conf.d
+
+volumes:
+  lemonadestand-dev-mariadb-data:
+    driver: local
+  lemonadestand-dev-mariadb-config:
+    driver: local

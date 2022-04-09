@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.Core", "sour
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.Infrastructure", "source\Lemonade.Stand.Infrastructure\Lemonade.Stand.Infrastructure.csproj", "{E9BA4176-4303-412A-9F2B-DB4F8840B4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.WebUi", "source\Lemonade.Stand.WebUi\Lemonade.Stand.WebUi.csproj", "{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lemonade.Stand.WebUI", "source\Lemonade.Stand.WebUI\Lemonade.Stand.WebUI.csproj", "{DAD900A7-CCDD-4693-A6B9-99AFC5F8F466}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -42,5 +42,16 @@ namespace Lemonade.Stand.Api.Controllers
         public async Task<IActionResult> UpdateFruit([FromBody] Fruit entity, int fruitId) {
             return StatusCode(200, _fruitrepo.Update(fruitId, entity));
         }
+
+        [HttpDelete("{fruitId}")]
+        public async Task<IActionResult> DeleteFruit(int fruitId) {
+            try {
+                var fruit = await _fruitrepo.Delete(fruitId);
+                return StatusCode(200, $"{fruit.Name} was deleted successfully");
+            }
+            catch (NotFoundException ex) {
+                return StatusCode(404, ex.Message);
+            }
+        }
     }
 }

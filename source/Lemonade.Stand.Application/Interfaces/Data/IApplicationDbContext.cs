@@ -5,5 +5,6 @@ namespace Lemonade.Stand.Application.Interfaces.Data {
     public interface IApplicationDbContext {
         DbSet<Recipe> Recipes { get; set;}
         DbSet<Fruit> Fruits { get; set; }
+        Task SaveChangesAsync();
     }
 }

@@ -2,14 +2,12 @@ using Lemonade.Stand.Core.Interfaces.Entities;
 
 namespace Lemonade.Stand.Core.Entities
 {
-    public class Recipe : IRecipe
+    public class Recipe
     {
-        public string Name { get; }
-
-        public Type AllowedFruit { get; }
-
-        public decimal ConsumptionPerGlass { get; }
-
-        public int PricePerGlass { get; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public Type AllowedFruit { get; set; }
+        public decimal ConsumptionPerGlass { get; set; }
+        public int PricePerGlass { get; set; }
     }
 }

@@ -4,7 +4,7 @@ services:
   db:
     image: mariadb:10.5
     ports:
-      - "35200:3306"
+      - "35201:3306"
     environment:
       MYSQL_ROOT_PASSWORD: dockerDb
       MYSQL_DATABASE: LemonadeStand

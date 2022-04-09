@@ -26,13 +26,18 @@ namespace Lemonade.Stand.Infrastructure.Repositories
         public async Task<Fruit> GetById(int fruitId) {
             return await _context.Fruits.FirstOrDefaultAsync(x => x.Id == fruitId) ?? throw new NotFoundException("fruit", fruitId);
         }
-        public async Task<Fruit> Update(int fruitId, Fruit entity)
-        {
+        public async Task<Fruit> Update(int fruitId, Fruit entity) {
             var fruit = await _context.Fruits.FirstOrDefaultAsync(x => x.Id == fruitId);
             fruit.Name = entity.Name;
             await SaveAsync();
 
             return fruit;
+        }
+        public async Task<Fruit> Delete(int fruitId) {
+                var fruit = await _context.Fruits.FirstOrDefaultAsync(x => x.Id == fruitId);
+                _context.Fruits.Remove(fruit);
+                await SaveAsync();
+                return fruit;
         }
         public async Task SaveAsync() {
             await _context.SaveChangesAsync();

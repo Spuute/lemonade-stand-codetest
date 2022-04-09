@@ -1,9 +1,8 @@
 using Lemonade.Stand.Application.Interfaces.Data;
 using Lemonade.Stand.Application.Interfaces.Repositories;
 using Lemonade.Stand.Core.Entities;
-using Microsoft.EntityFrameworkCore;
 
-namespace Lemonade.Stand.Application.Repositories
+namespace Lemonade.Stand.Infrastructure.Repositories
 {
     public class FruitRepository : IFruitRepository
     {

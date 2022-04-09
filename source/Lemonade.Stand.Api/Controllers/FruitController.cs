@@ -20,5 +20,12 @@ namespace Lemonade.Stand.Api.Controllers
             await _fruitrepo.SaveAsync();
             return StatusCode(201, $"{entity.Name} saved to database");
         }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllFruits() {
+            return StatusCode(200, await _fruitrepo.GetAll());
+        }
+
+        
     }
 }

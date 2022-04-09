@@ -1,3 +1,4 @@
+using Lemonade.Stand.Application.Exceptions;
 using Lemonade.Stand.Application.Interfaces.Repositories;
 using Lemonade.Stand.Core.Entities;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,20 @@ namespace Lemonade.Stand.Api.Controllers
             return StatusCode(200, await _fruitrepo.GetAll());
         }
 
-        
+        [HttpGet("{fruitId}")]
+        public async Task<IActionResult> GetById(int fruitId) {
+            try {
+                var fruit = await _fruitrepo.GetById(fruitId);
+                return StatusCode(200, fruit);
+            } 
+            catch(NotFoundException ex) {
+                return StatusCode(404, ex.Message);
+            }
+        }
+
+        [HttpPut("{fruitId}")]
+        public async Task<IActionResult> UpdateFruit([FromBody] Fruit entity, int fruitId) {
+            return StatusCode(200, _fruitrepo.Update(fruitId, entity));
+        }
     }
 }

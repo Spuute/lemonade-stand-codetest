@@ -11,7 +11,7 @@ namespace Lemonade.Stand.Infrastructure.Persistence
         public DbSet<Recipe> Recipes { get; set; }
         public DbSet<Fruit> Fruits { get; set; }
         
-        public async Task SaveChangesAsync(){
+        public async Task SaveChangesAsync() {
             await base.SaveChangesAsync();
         }
     }

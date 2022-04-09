@@ -1,10 +1,11 @@
 using Lemonade.Stand.Application.Interfaces.Data;
+using Lemonade.Stand.Application.Interfaces.Repositories;
 using Lemonade.Stand.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lemonade.Stand.Application.Repositories
 {
-    public class FruitRepository
+    public class FruitRepository : IFruitRepository
     {
         private readonly IApplicationDbContext _context;
         public FruitRepository(IApplicationDbContext context)

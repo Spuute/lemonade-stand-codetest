@@ -1,0 +1,331 @@
+openapi: '3.0.3'
+
+info:
+  title: OpenAPI Specification for the Lemonade Stand
+  description: API Specification document for the Lemonade Stand system
+  version: '1.0.0'
+  contact:
+    name: Patric Bergkvist
+    email: spuute@gmail.com
+    url: https://spuute.github.io/resume
+
+servers:
+  - url: http://localhost:5110/
+    description: Development servers
+
+tags:
+  - name: fruits
+    description: All operations for fruits
+  - name: recipes
+    description: All operations for recipes
+
+paths:
+  /fruits:
+    summary: Operations for fruits
+    description: Contains all operations for fruits
+    get:
+      tags:
+        - fruits
+      summary: Gets all fruits
+      description: Returns a list of all fruits
+      operationId: getFruits
+      responses:
+        '200':
+          description: Successfully returned all fruits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/fruit"
+        '4XX':
+          $ref: "#/components/responses/4xxResponse"
+        '5XX':
+          $ref: "#/components/responses/5xxResponse"
+    post:
+      summary: Adds new fruit
+      description: Adds a new fruit to the database
+      tags:
+        - fruits
+      operationId: addFruit
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/fruitRequest"
+      responses:
+        '201':
+          description: Successfully added the fruit to the database
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/fruitResponse"
+  /fruits/{fruitId}:
+    summary: Operations for a specific fruit
+    description: Contains all operations for a specific fruit by id
+    get:
+      operationId: getFruit
+      summary: Gets a specific fruit based on fruitId
+      description: Returnes the specific fruit
+      tags:
+        - fruits
+      parameters:
+        - $ref: "#/components/parameters/fruitId"
+      responses:
+        '200':
+          description: Successfully returned fruit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/fruitResponse"
+        '4XX':
+          $ref: "#/components/responses/4xxResponse"
+        '5XX':
+          $ref: "#/components/responses/5xxResponse"
+    put:
+      operationId: updateFruit
+      summary: Updates a specific fruit
+      description: Returnes the updated fruit
+      tags:
+        - fruits
+      parameters:
+        - $ref: "#/components/parameters/fruitId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/fruitRequest"
+      responses:
+        '200':
+          description: Successfully updated fruit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/fruitResponse"
+        '4XX':
+          $ref: "#/components/responses/4xxResponse"
+        '5XX':
+          $ref: "#/components/responses/5xxResponse"
+    delete:
+      operationId: deleteFruit
+      summary: Delete a specific fruit
+      description: Removes a fruit entry from the database
+      tags:
+        - fruits
+      parameters:
+        - $ref: "#/components/parameters/fruitId"
+      responses:
+        '200':
+          description: Successfully deleted fruit
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/fruit"
+        '4XX':
+          $ref: "#/components/responses/4xxResponse"
+        '5XX':
+          $ref: "#/components/responses/5xxResponse"
+  /recipes:
+    summary: Operations for recipes
+    description: Contains all operations of recipes
+    get:
+      tags:
+        - recipes
+      summary: Gets all recipes
+      description: Returns a list of all recipes
+      operationId: getRecipes
+      responses:
+        '200':
+          description: Successfully returned all recipes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recipe'
+        '4XX':
+          $ref: '#/components/responses/4xxResponse'
+        '5XX':
+          $ref: '#/components/responses/5xxResponse'
+    post:
+      tags:
+        - recipes
+      summary: Adds a recipe
+      description: Adds a new recipe to the system
+      operationId: addRecipe
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/recipeRequest"
+      responses:
+        '201':
+          description: Successfully added the recipe to the system
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recipeResponse'
+  /recipes/{recipeId}:
+    summary: Operations for specific recipe
+    description: Contains all operations for specific recipes
+    get:
+      operationId: getRecipe
+      summary: Gets a specific recipe based on recipeId
+      description: Returns the specific recipe
+      tags:
+        - recipes
+      parameters:
+        - $ref: '#/components/parameters/recipeId'
+      responses:
+        '200':
+          description: Successfully returned recipe
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/recipeResponse'
+        '4XX':
+          $ref: '#/components/responses/4xxResponse'
+        '5XX':
+          $ref: '#/components/responses/5xxResponse'
+    put:
+      operationId: updateRecipe
+      summary: Updates a specific recipe
+      description: Returns the updated recipe
+      tags:
+        - recipes
+      parameters:
+        - $ref: "#/components/parameters/recipeId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/recipeRequest"
+      responses:
+        '200':
+          description: Successfully updated recipe
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/recipeResponse"
+    delete:
+      operationId: deleteRecipe
+      summary: Delete a specific recipe
+      description: Removes a recipe entry from the system
+      tags:
+        - recipes
+      parameters:
+        - $ref: "#/components/parameters/recipeId"
+      responses:
+        '200':
+          description: Successfully deleted recipe
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/recipeResponse"
+        '4XX':
+          $ref: "#/components/responses/4xxResponse"
+        '5XX':
+          $ref: "#/components/responses/5xxResponse" 
+
+
+
+components:
+  schemas:
+    fruit:
+      type: object
+      description: Represents a fruit entry
+      properties:
+        Id:
+          type: integer
+          description: Database identification
+        Name:
+          type: string
+          description: The name of the fruit
+    fruitResponse:
+      type: object
+      description: DTO for get requests and responses
+      properties:
+        Name:
+          type: string
+          description: Name of the fruit
+    fruitRequest:
+      type: object
+      description: DTO to be used when adding new fruit to Database
+      properties:
+        Name: 
+          type: string
+          description: Name of the fruit
+    recipe:
+      description: Represents a recipe entry
+      properties:
+        id:
+          type: integer
+          description: Database identification
+        name:
+          type: string
+          description: The recipe name
+        allowedFruit:
+          $ref: "#/components/schemas/fruit"
+          description: The fruit that the recipe is based on
+        consumptionPerGlass:
+          type: number
+          format: double
+          description: The amount of fruits needed for one glass of juice
+        pricePerGlass:
+          type: integer
+          format: int32
+          description: The price per glass of juice
+    recipeRequest:
+      description: DTO to be used when adding new recipe to Database
+      properties:
+        name:
+          type: string
+          description: The recipe name
+        allowedFruit:
+          $ref: "#/components/schemas/fruit"
+          description: The fruit that the recipe is based on
+        consumptionPerGlass:
+          type: number
+          format: double
+          description: The amount of fruits needed for one glass of juice
+        pricePerGlass:
+          type: integer
+          format: int32
+          description: The price per glass of juice
+    recipeResponse:
+      description: DTO for get requests and repsonses
+      properties:
+        name:
+          type: string
+          description: The recipe name
+        allowedFruit:
+          $ref: "#/components/schemas/fruit"
+          description: The fruit that the recipe is based on
+        consumptionPerGlass:
+          type: number
+          format: double
+          description: The amount of fruits needed for one glass of juice
+        pricePerGlass:
+          type: integer
+          format: int32
+          description: The price per glass of juice
+  parameters:
+    fruitId:
+      name: fruitId
+      in: path
+      description: The unique fruit id
+      required: true
+      schema:
+        type: integer
+        format: int32
+    recipeId:
+      name: recipeId
+      in: path
+      description: The unique recipe id
+      required: true
+      schema:
+        type: integer
+        format: int32
+  responses:
+    4xxResponse:
+      description: Bad Request
+    5xxResponse:
+      description: Internal server error

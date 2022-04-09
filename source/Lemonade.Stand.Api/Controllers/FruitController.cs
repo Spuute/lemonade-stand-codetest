@@ -40,7 +40,7 @@ namespace Lemonade.Stand.Api.Controllers
 
         [HttpPut("{fruitId}")]
         public async Task<IActionResult> UpdateFruit([FromBody] Fruit entity, int fruitId) {
-            return StatusCode(200, _fruitrepo.Update(fruitId, entity));
+            return StatusCode(200, await _fruitrepo.Update(fruitId, entity));
         }
 
         [HttpDelete("{fruitId}")]

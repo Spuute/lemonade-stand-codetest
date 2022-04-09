@@ -1,3 +1,4 @@
+using Lemonade.Stand.Application.Exceptions;
 using Lemonade.Stand.Application.Interfaces.Data;
 using Lemonade.Stand.Application.Interfaces.Repositories;
 using Lemonade.Stand.Core.Entities;
@@ -22,8 +23,20 @@ namespace Lemonade.Stand.Infrastructure.Repositories
             return await _context.Fruits.ToListAsync();
         }
 
+        public async Task<Fruit> GetById(int fruitId) {
+            return await _context.Fruits.FirstOrDefaultAsync(x => x.Id == fruitId) ?? throw new NotFoundException("fruit", fruitId);
+        }
+        public async Task<Fruit> Update(int fruitId, Fruit entity)
+        {
+            var fruit = await _context.Fruits.FirstOrDefaultAsync(x => x.Id == fruitId);
+            fruit.Name = entity.Name;
+            await SaveAsync();
+
+            return fruit;
+        }
         public async Task SaveAsync() {
             await _context.SaveChangesAsync();
         }
+
     }
 }

@@ -19,6 +19,7 @@ namespace Lemonade.Stand.Infrastructure {
             services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
 
             services.AddScoped<IFruitRepository, FruitRepository>();
+            services.AddScoped<IRecipeRepository, RecipeRepository>();
 
             return services;
         }

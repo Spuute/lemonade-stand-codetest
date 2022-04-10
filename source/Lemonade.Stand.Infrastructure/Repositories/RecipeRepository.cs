@@ -22,7 +22,7 @@ namespace Lemonade.Stand.Infrastructure.Repositories
 
         public async Task<IEnumerable<Recipe>> GetAll()
         {
-            return await _context.Recipes.ToListAsync();
+            return await _context.Recipes.Include(x => x.AllowedFruit).ToListAsync();
         }
 
         public async Task<Recipe> GetById(int recipeId)
@@ -35,7 +35,6 @@ namespace Lemonade.Stand.Infrastructure.Repositories
             _context.Recipes.Add(entity);
             await SaveAsync();
         }
-
 
         public async Task<Recipe> Update(int recipeId, Recipe entity)
         {

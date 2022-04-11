@@ -1,5 +1,4 @@
 using System.Collections.ObjectModel;
-using Lemonade.Stand.Application.Interfaces.Repositories;
 using Lemonade.Stand.Application.Interfaces.Services;
 using Lemonade.Stand.Application.Models;
 using Lemonade.Stand.Core.Interfaces.Entities;
@@ -8,14 +7,6 @@ namespace Lemonade.Stand.Application.Services
 {
     public class FruitPressService : IFruitPressService
     {
-        private readonly IFruitRepository _fruitRepo;
-        private readonly IRecipeRepository _recipeRepo;
-        public FruitPressService(IRecipeRepository recipeRepo, IFruitRepository fruitRepo)
-        {
-            _recipeRepo = recipeRepo;
-            _fruitRepo = fruitRepo;
-
-        }
         public FruitPressResult Produce(IRecipe recipe, Collection<IFruit> fruits, int moneyPaid, int orderedGlassQuantity)
         {
             // Hämta recept

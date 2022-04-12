@@ -10,12 +10,6 @@ namespace Lemonade.Stand.Application.Services
     {
         public FruitPressResult Produce(IRecipe recipe, Collection<IFruit> fruits, int moneyPaid, int orderedGlassQuantity)
         {
-            System.Console.WriteLine("Inuti Produce metoden");
-            System.Console.WriteLine("_____________________");
-            System.Console.WriteLine($"Valt recept: {recipe.Name}");
-            System.Console.WriteLine($"Det finns {fruits.Count()} {fruits.GetType()} i listan");
-            System.Console.WriteLine($"innuti Produce metoden, betalat: {moneyPaid}");
-            System.Console.WriteLine($"Beställningen gäller {orderedGlassQuantity} glas");
             var fruitsNeeded = orderedGlassQuantity * recipe.ConsumptionPerGlass;
             var totalCost = orderedGlassQuantity * recipe.PricePerGlass;
             

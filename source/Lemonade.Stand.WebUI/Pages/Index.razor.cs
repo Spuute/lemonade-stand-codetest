@@ -63,7 +63,6 @@ namespace Lemonade.Stand.WebUI.Pages
                     ShowOrange = false;
                     ShowMelon = true;
                 }
-
         }
 
         protected override async Task OnInitializedAsync()

@@ -28,22 +28,16 @@
     <EditForm Model="@OrderedGlasses">
         <div class="form-floating mb-3">
             <InputNumber id="orderedGlasses" class="form-control" @bind-Value="OrderedGlasses" />
-            @* <input type="number" class="form-control" id="floatingInput" placeholder="10.99"> *@
             <label for="floatingInput" class="ml-2">Order quantity</label>
         </div>
     </EditForm>
 </div>
 <div class="row">
     <EditForm Model="@MoneyPaid">
-        <DataAnnotationsValidator/>
-        <ValidationSummary/>
-        <ValidationMessage For="() => MoneyPaid" />
         <div class="form-floating mb-3">
             <InputNumber id="moneyPaid" class="form-control" @bind-Value="MoneyPaid" />
             <label for="moneyPaid" class="ml-2">Money paid</label>
-            @* <p>Money paid: @MoneyPaid</p> *@
         </div>
-        <input type="submit" class="btn btn-primary" value="Save"/>
     </EditForm>
 </div>
 <div hidden="@(!ShowApple)" class="row">
@@ -51,7 +45,6 @@
             <div class="form-floating mb-3">
                 <InputNumber @bind-Value="FruitsAdded" class="form-control" />
                 <label class="ml-2">Apples added</label>
-                @* <p>Apples added: @ApplesAdded</p> *@
             </div>
         </EditForm>
 </div>

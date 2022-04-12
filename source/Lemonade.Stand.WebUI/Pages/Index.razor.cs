@@ -15,9 +15,6 @@ namespace Lemonade.Stand.WebUI.Pages
         public Recipe<Apple> AppleLemonade { get; set; } = new Recipe<Apple>("Apple Lemonade", 2.5M, 10);
         public Recipe<Melon> MelonLemonade { get; set; } = new Recipe<Melon>("Melon Lemonade", 0.5M, 12);
         public Recipe<Orange> OrangeLemonade { get; set; } = new Recipe<Orange>("Orange Lemonade", 1, 9);
-
-        [Required]
-        [Range(10,1000, ErrorMessage = "Betala mer snåljävel")]
         public int MoneyPaid { get; set; } 
         public int OrderedGlasses { get; set; } = 0;
         public int FruitsAdded { get; set; } = 0;

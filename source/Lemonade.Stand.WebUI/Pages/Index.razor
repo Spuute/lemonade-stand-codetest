@@ -1,4 +1,5 @@
 ﻿@page "/"
+@inject IFruitPressService _fruitPressService
 
 <PageTitle>Home</PageTitle>
 
@@ -9,13 +10,13 @@
     <div class="col-lg-4">
         <div class="card text-center">
         <div class="card-header">
-            <strong>Apple Lemonade</strong>
+            <strong>@AppleLemonade.Name</strong>
         </div>
         <div class="card-body">
             <img src="..." class="card-img-top" alt="...">
-            <h5 class="card-title">Price per glass: 10</h5>
+            <h5 class="card-title">Price per glass: @AppleLemonade.PricePerGlass</h5>
             <hr>
-            <h5 class="card-title">Fruits per glass: 2,5</h5>
+            <h5 class="card-title">Fruits per glass: @AppleLemonade.ConsumptionPerGlass</h5>
         </div>
         <div class="card-footer text-muted">
             Total sold: 2
@@ -68,16 +69,22 @@
     </select>
 </div>
 <div class="row">
-    <div class="form-floating mb-3">
-        <input type="number" class="form-control" id="floatingInput" placeholder="10.99">
-        <label for="floatingInput" class="ml-2">Order quantity</label>
-    </div>
+    <EditForm Model="@OrderedGlasses">
+        <div class="form-floating mb-3">
+            <InputNumber id="orderedGlasses" class="form-control" @bind-Value="OrderedGlasses" />
+            @* <input type="number" class="form-control" id="floatingInput" placeholder="10.99"> *@
+            <label for="floatingInput" class="ml-2">Order quantity</label>
+        </div>
+    </EditForm>
 </div>
 <div class="row">
-    <div class="form-floating mb-3">
-        <input type="number" class="form-control" id="floatingInput" placeholder="10.99">
-        <label for="floatingInput" class="ml-2">Money paid</label>
-    </div>
+    <EditForm Model="@MoneyPaid">
+        <div class="form-floating mb-3">
+            @* <input type="number" class="form-control" id="floatingInput" placeholder="10.99"> *@
+            <InputNumber id="moneyPaid" class="form-control" @bind-Value="MoneyPaid" />
+            <label for="moneyPaid" class="ml-2">Money paid</label>
+        </div>
+    </EditForm>
 </div>
 <div class="row">
     <div class="form-floating mb-3">

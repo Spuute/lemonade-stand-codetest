@@ -1,7 +1,3 @@
-using Lemonade.Stand.Application.Interfaces.Data;
-using Lemonade.Stand.Application.Interfaces.Repositories;
-using Lemonade.Stand.Infrastructure.Persistence;
-using Lemonade.Stand.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,13 +9,6 @@ namespace Lemonade.Stand.Infrastructure {
             //     services.AddDbContext<ApplicationDbContext>(options =>
             //         options.UseInMemoryDatabase("InMemoryDb"));
             // }
-
-            services.AddDbContext<ApplicationDbContext>(opts => opts.UseMySql(configuration.GetConnectionString("Db"), new MariaDbServerVersion(new System.Version(10, 5, 6))));
-
-            services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ApplicationDbContext>());
-
-            services.AddScoped<IFruitRepository, FruitRepository>();
-            services.AddScoped<IRecipeRepository, RecipeRepository>();
 
             return services;
         }

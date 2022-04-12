@@ -15,19 +15,23 @@ namespace Lemonade.Stand.Application.Services
             
             foreach(var fruit in fruits) {
                 if(recipe.AllowedFruit != fruit.GetType()) {
-                    throw new WrongFruitException();
+                    throw new WrongFruitException("You are trying to add the wrong fruit for this recipe");
                 }
             }
 
             if(moneyPaid < totalCost) {
-                throw new NotEnoughMoneyPaidException();
+                throw new NotEnoughMoneyPaidException("You need to charge more money");
             }
 
             if(fruits.Count() < fruitsNeeded) {
-                throw new NotEnoughFruitsException();
+                throw new NotEnoughFruitsException("You need to add more fruits");
             }
 
-            var result = new FruitPressResult();
+            var result = new FruitPressResult() {
+              Beverage = recipe.Name,
+              DeliveredGlasses = orderedGlassQuantity,
+              MoneyPaid = totalCost  
+            };
 
             return result;
         }

@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using Lemonade.Stand.Application.Models;
 using Lemonade.Stand.Core.Entities;
 using Lemonade.Stand.Core.Interfaces.Entities;
+using Lemonade.Stand.WebUI.Models;
 using Microsoft.AspNetCore.Components;
 
 
@@ -22,6 +23,7 @@ namespace Lemonade.Stand.WebUI.Pages
         public bool ShowApple { get; set; } 
         public bool ShowOrange { get; set; }
         public bool ShowMelon { get; set; } 
+        public InputFields InputFields { get; set; } = new InputFields();
 
 
         private void InvokedFruitPressService() {
@@ -29,7 +31,7 @@ namespace Lemonade.Stand.WebUI.Pages
             var orange = new Orange();
             var melon = new Melon();
             
-            for(int i = 0; i < FruitsAdded; i++) {
+            for(int i = 0; i < InputFields.FruitsAdded; i++) {
                 if(SelectedRecipe.AllowedFruit == typeof(Apple)) {
                     Fruits.Add(apple);
                 } 
@@ -40,11 +42,10 @@ namespace Lemonade.Stand.WebUI.Pages
                     Fruits.Add(melon);
                 }
             }
-            FruitPressResult receipt = _fruitPressService.Produce(SelectedRecipe, Fruits ,MoneyPaid, OrderedGlasses);
-            System.Console.WriteLine(Fruits.Count());
+            FruitPressResult receipt = _fruitPressService.Produce(SelectedRecipe, Fruits , InputFields.MoneyPaid, InputFields.OrderedGlasses);
             NavManager.NavigateTo("/receipt");
         }
-        private void TestOnChange(ChangeEventArgs e){
+        private void SetSelectedRecipe(ChangeEventArgs e){
                 int recipeNumber = int.Parse(e.Value.ToString());
                 SelectedRecipe = Recipes[recipeNumber];
 

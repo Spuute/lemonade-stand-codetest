@@ -17,56 +17,34 @@
     <h3 class="text-center">Customer order</h3>
 </div>
 <div class="row">
-    <select class="form-select form-select-lg mb-3" @onchange="TestOnChange" aria-label=".form-select-lg">
-        <option selected>Select recipe</option>
-        @for(int i = 0; i < Recipes.Count(); i++) {
-            <option value="@i">@Recipes[i].Name</option>
-        }
-    </select>
-</div>
-<div class="row">
-    <EditForm Model="@OrderedGlasses">
+      <EditForm Model=@InputFields>
+        <select class="form-select form-select-lg mb-3" @onchange="SetSelectedRecipe" aria-label=".form-select-lg">
+            <option selected>Select recipe</option>
+            @for(int i = 0; i < Recipes.Count(); i++) {
+                <option value="@i">@Recipes[i].Name</option>
+            }
+        </select>
         <div class="form-floating mb-3">
-            <InputNumber id="orderedGlasses" class="form-control" @bind-Value="OrderedGlasses" />
+            <InputNumber id="orderedGlasses" class="form-control" @bind-Value="InputFields.OrderedGlasses" />
             <label for="floatingInput" class="ml-2">Order quantity</label>
         </div>
-    </EditForm>
-</div>
-<div class="row">
-    <EditForm Model="@MoneyPaid">
         <div class="form-floating mb-3">
-            <InputNumber id="moneyPaid" class="form-control" @bind-Value="MoneyPaid" />
+            <InputNumber id="moneyPaid" class="form-control" @bind-Value="InputFields.MoneyPaid" />
             <label for="moneyPaid" class="ml-2">Money paid</label>
         </div>
-    </EditForm>
-</div>
-<div hidden="@(!ShowApple)" class="row">
-        <EditForm Model="@FruitsAdded">
-            <div class="form-floating mb-3">
-                <InputNumber @bind-Value="FruitsAdded" class="form-control" />
-                <label class="ml-2">Apples added</label>
-            </div>
-        </EditForm>
-</div>
-<div hidden="@(!ShowOrange)" class="row">
-    <EditForm Model="@FruitsAdded">
-        <div class="form-floating mb-3">
-            <InputNumber @bind-Value="FruitsAdded" class="form-control" />
+        <div hidden="@(!ShowApple)" class="form-floating mb-3">
+            <InputNumber @bind-Value="InputFields.FruitsAdded" class="form-control" />
+            <label class="ml-2">Apples added</label>
+        </div>
+        <div hidden="@(!ShowOrange)" class="form-floating mb-3">
+            <InputNumber @bind-Value="InputFields.FruitsAdded" class="form-control" />
             <label class="ml-2">Oranges added</label>
         </div>
-    </EditForm>
-</div>
-<div hidden="@(!ShowMelon)" class="row ">
-    <EditForm Model="@FruitsAdded">
-        <div class="form-floating mb-3">
-            <InputNumber @bind-Value="FruitsAdded" class="form-control" />
+        <div hidden="@(!ShowMelon)" class="form-floating mb-3">
+            <InputNumber @bind-Value="InputFields.FruitsAdded" class="form-control" />
             <label class="ml-2">Melons added</label>
         </div>
+        <input type="submit" value="Process order" class="btn btn-primary" @onclick="@(() => { InvokedFruitPressService(); StateHasChanged(); })" />
     </EditForm>
-</div>
-<div class="row">
-    <div class="col-lg-2">
-        <button class="btn btn-primary btn-default" @onclick="@(() => { InvokedFruitPressService(); StateHasChanged(); })" >Process order</button>
-    </div>
 </div>
 
